@@ -8,10 +8,14 @@ def post_list(request): # обязательный объект, содержа�
     # render() - функция сокращенного доступа, «охватывает» несколько уровней MVC
 
 
-def post_detail(request, id): # представление детальной информации о посте (опубликованном)
+def post_detail(request, year, month, day, post): # представление детальной информации о посте (опубликованном)
     post = get_object_or_404(Post,
-                             id=id,
-                             status=Post.Status.PUBLISHED)
+                             status=Post.Status.PUBLISHED,
+                             slug=post,
+                             publish__year=year,
+                             publish__month=month,
+                             publish__day=day
+                             )
     return render(request,
                   'blog/post/detail.html',
                   {'post': post})
