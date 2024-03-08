@@ -12,8 +12,8 @@ from django.contrib.auth.models import User
 """
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset()\
-            .filter(status=Post.Status.PUBLISHED)
+        return super().get_queryset().filter(status=Post.Status.PUBLISHED)
+        # get_queryset() менеджера возвращает набор запросов QuerySet, переопределилa этот метод
 
 
 class Post(models.Model):
